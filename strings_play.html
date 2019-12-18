@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>String_Play</title>
+</head>
+<style type="text/css">
+
+.body{
+    height: 200px;
+    width: 800px;
+    background: whitesmoke;
+    text-align: center;
+    margin: 100px 0px 0px 200px;
+}
+
+#input{
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 30px;
+    width: 250px;
+    font-size: 6mm;
+    margin-top: 20px;
+    text-align: center;
+}
+#print{
+    font-size: 6mm;
+}
+button{
+    height: 30px;
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-weight: bold;
+    background: rgb(9, 192, 9);
+}
+</style>
+<body>
+    <div class="body">
+        <h2>Please Enter the Sentence</h2>
+        <input type="text" id="input">
+        <p id="print"></p>
+        <button onclick="removeSpace()">Remove Spaces</button>
+        <button onclick="camelCase()">CamelCase</button>
+        <button onclick="snakeCase()">Snake_Case</button>
+        <button onclick="hypenCase()">Hypen-Case</button>
+        <button onclick="mirrorImage()">Mirror Image</button>
+    </div>
+    <script type="text/javascript">
+
+    var text = document.getElementById("input");
+    var char = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var CHAR = ['A','B','C','D','E','F','G','H','I','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
+    function removeSpace() {
+        remove = text.value;
+        var space = document.getElementById("print");
+        space.innerHTML = remove.replace("  "," ");
+        // document.getElementById("input").value = "";
+    }
+
+    function camelCase() {
+        camel = text.value;
+        var ccase = "";
+        for (var i = 0; i < camel.length; i++){
+            for (var j = 0; j < char.length; j++){
+                if ((camel[i] == " ") && (camel[i+1] == char[j])){
+                    ccase += CHAR[j];
+                }
+                else if ((camel[i] == " ") && (camel[i+1] == CHAR[j])){
+                    ccase += CHAR[j];
+                }
+                else if ((camel[i] == char[j]) && (camel[i-1] != " ")){
+                    ccase += char[j];
+                }
+                else if ((camel[i] == CHAR[j]) && (camel[i-1] != " ")){
+                    ccase += char[j];
+                }
+                document.getElementById("print").innerHTML = ccase;
+            }
+            // document.getElementById("input").value = "";
+        }
+    }
+
+    function snakeCase() {
+        snake = text.value;
+        var scase = "";
+        for (var i = 0; i < snake.length; i++){
+            for (var j = 0; j < char.length; j++){
+                if ((snake[i] == " ") && (snake[i+1] == char[j])){
+                    scase += ("_" + char[j]);
+                }
+                else if ((snake[i] == " ") && (snake[i+1] == CHAR[j])){
+                    scase += ("_" + CHAR[j]);
+                }
+                else if ((snake[i] == char[j]) && (snake[i-1] != " ")){
+                    scase += char[j];
+                }
+                else if ((snake[i] == CHAR[j]) && (snake[i-1] != " ")){
+                    scase += CHAR[j];
+                }
+                document.getElementById("print").innerHTML = scase;
+            }
+            // document.getElementById("input").value = "";
+        }
+    }
+
+    function hypenCase() {
+        hypen = text.value;
+        var hcase = "";
+        for (var i = 0; i < hypen.length; i++){
+            for (var j = 0; j < char.length; j++){
+                if ((hypen[i] == " ") && (hypen[i+1] == char[j])){
+                    hcase += ("-" + char[j]);
+                }
+                else if ((hypen[i] == " ") && (hypen[i+1] == CHAR[j])){
+                    hcase += ("-" + CHAR[j]);
+                }
+                else if ((hypen[i] == char[j]) && (hypen[i-1] != " ")){
+                    hcase += char[j];
+                }
+                else if ((hypen[i] == CHAR[j]) && (hypen[i-1] != " ")){
+                    hcase += CHAR[j];
+                }
+                document.getElementById("print").innerHTML = hcase;
+            }
+            // document.getElementById("input").value = "";
+        }
+    }
+
+    function mirrorImage(){
+        Print = text.value;
+        var result = "";
+        for (var i = 0; i < Print.length; i++){
+            for (var j = 0; j < char.length; j++){
+                if(Print[i] == char[j]){
+                    console.log(char[char.length-1 - j]);
+                    result += char[char.length-1 - j];
+                    document.getElementById("print").innerHTML = result;
+                    // document.getElementById("input").value = "";
+                }
+                if(Print[i] == CHAR[j]){
+                    console.log(CHAR[CHAR.length-1 - j]);
+                    result += CHAR[CHAR.length-1 - j];
+                    document.getElementById("print").innerHTML = result;
+                    // document.getElementById("input").value = "";
+                }
+            }
+        }
+    }
+    </script>
+</body>
+</html>
